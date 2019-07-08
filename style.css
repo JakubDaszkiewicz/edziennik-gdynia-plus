@@ -1,0 +1,36 @@
+@import url('https://fonts.googleapis.com/css?family=Open+Sans&display=swap&subset=latin-ext');
+
+body
+{
+	background: #202020;
+	color: #aaaaaa;
+	font-family: 'Open Sans', sans-serif;
+	font-size: 24px;
+}
+
+#container
+{
+	width: 1000px;
+	margin-left: auto;
+	margin-right: auto;
+}
+
+a:link
+{
+	color: white;
+}
+
+a:visited
+{
+	color: white;
+}
+
+a:active
+{
+	color: white;
+}
+
+a:hover
+{
+	color: white;
+}
