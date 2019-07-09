@@ -1,8 +1,15 @@
 // ==UserScript==
 // @name     e-Dziennik Gdynia plus
 // @version  1.0.2
+// @author Jakub Daszkiewicz
+// @description Skrypt zwiększający funkcjonalność gdyńskiego e-Dziennika.
+// @homepageURL https://jakubdaszkiewicz.github.io/edziennik-gdynia-plus/
+// @downloadURL https://jakubdaszkiewicz.github.io/edziennik-gdynia-plus/download/e_dziennik_gdynia_plus-newest.user.js
+// @updateURL https://jakubdaszkiewicz.github.io/edziennik-gdynia-plus/download/e_dziennik_gdynia_plus.meta.js
+// @icon https://jakubdaszkiewicz.github.io/edziennik-gdynia-plus/img/icon.svg
 // @grant    none
 // @include https://nasze.miasto.gdynia.pl/ed_miej/zest_ed_oceny_ucznia_szczegoly.pl*
+// @run-at document-end
 // ==/UserScript==
 
 var rowsAmount = window.wrappedJSObject.nRows;
