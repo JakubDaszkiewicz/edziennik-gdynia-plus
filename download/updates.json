@@ -4,6 +4,9 @@
       "updates": [
         { "version": "1.0.2",
           "update_link": "https://jakubdaszkiewicz.github.io/edziennik-gdynia-plus/download/e_dziennik_gdynia_plus-1.0.2.xpi" },
+        
+        { "version": "1.1.0",
+          "update_link": "https://jakubdaszkiewicz.github.io/edziennik-gdynia-plus/download/e_dziennik_gdynia_plus-1.1.0.xpi" },
       ]
     }
   }
