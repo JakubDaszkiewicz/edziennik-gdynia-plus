@@ -1,6 +1,6 @@
 // ==UserScript==
 // @name     e-Dziennik Gdynia plus
-// @version  1.0.2
+// @version  1.1.0
 // @author Jakub Daszkiewicz
 // @description Skrypt zwiększający funkcjonalność gdyńskiego e-Dziennika.
 // @homepageURL https://jakubdaszkiewicz.github.io/edziennik-gdynia-plus/
@@ -12,10 +12,10 @@
 // @run-at document-end
 // ==/UserScript==
 
-var rowsAmount = window.wrappedJSObject.nRows;
+var rows = document.getElementsByClassName("dataRow");
 var headings = document.getElementsByClassName("colsSortLab");
 var cells = document.getElementsByClassName("listing");
-var columnsAmount = cells.length/rowsAmount;
+var columnsAmount = cells.length/rows.length;
 
 var markNumber;
 for(i=0;i<columnsAmount;i++)
@@ -41,7 +41,7 @@ if(markNumber == undefined || weightNumber == undefined || ifCountedNumber == un
 }
 else
 {
-	var marks = new Array(rowsAmount);
+	var marks = new Array(rows.length);
 	var ii = 0;
 	for(i=0;i<cells.length;i++)
 	{
@@ -51,7 +51,7 @@ else
 			ii++;
 		}
 	}
-	var weights = new Array(rowsAmount);
+	var weights = new Array(rows.length);
 	ii = 0;
 	for(i=0;i<cells.length;i++)
 	{
@@ -61,7 +61,7 @@ else
 			ii++;
 		}
 	}
-	var ifCounteds = new Array(rowsAmount);
+	var ifCounteds = new Array(rows.length);
 	ii = 0;
 	for(i=0;i<cells.length;i++)
 	{
@@ -74,7 +74,7 @@ else
 	
 	var countedAmount = 0;
 	
-	for(i=0;i<rowsAmount;i++)
+	for(i=0;i<rows.length;i++)
 	{
 		if (ifCounteds[i] == "Tak")
 			countedAmount++;
@@ -83,7 +83,7 @@ else
 	var multipliedMarks = new Array(countedAmount);
 	
 	ii = 0;
-	for(i=0;i<rowsAmount;i++)
+	for(i=0;i<rows.length;i++)
 	{
 		if (ifCounteds[i] == "Tak")
 		{
@@ -99,7 +99,7 @@ else
 	}
 	
 	var addedWeights = 0;
-	for(i=0;i<rowsAmount;i++)
+	for(i=0;i<rows.length;i++)
 	{
 		if (ifCounteds[i] == "Tak")
 		{
