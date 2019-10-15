@@ -2,14 +2,19 @@
   "addons": {
     "{49e85369-f6d3-411b-8f92-da27418092f8}": {
       "updates": [
-        { "version": "1.0.2",
-          "update_link": "https://jakubdaszkiewicz.github.io/edziennik-gdynia-plus/download/e_dziennik_gdynia_plus-1.0.2.xpi" },
-        
-        { "version": "1.1.0",
-          "update_link": "https://jakubdaszkiewicz.github.io/edziennik-gdynia-plus/download/e_dziennik_gdynia_plus-1.1.0.xpi" },
-        
-        { "version": "1.1.1",
-          "update_link": "https://jakubdaszkiewicz.github.io/edziennik-gdynia-plus/download/e_dziennik_gdynia_plus-1.1.1.xpi" }
+        {
+          "version": "1.0.2",
+          "update_link": "https://jakubdaszkiewicz.github.io/edziennik-gdynia-plus/download/e_dziennik_gdynia_plus-1.0.2.xpi"
+        },
+        {
+          "version": "1.1.0",
+          "update_link": "https://jakubdaszkiewicz.github.io/edziennik-gdynia-plus/download/e_dziennik_gdynia_plus-1.1.0.xpi"
+        },
+        {
+          "version": "1.1.1",
+          "update_link": "https://jakubdaszkiewicz.github.io/edziennik-gdynia-plus/download/e_dziennik_gdynia_plus-1.1.1.xpi"
+        }
+        }
       ]
     }
   }
