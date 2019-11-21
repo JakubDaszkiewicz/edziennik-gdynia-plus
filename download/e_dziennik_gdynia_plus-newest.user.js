@@ -1,6 +1,6 @@
 // ==UserScript==
 // @name     e-Dziennik Gdynia plus
-// @version  1.1.1
+// @version  1.2.0
 // @author Jakub Daszkiewicz
 // @description Skrypt zwiększający funkcjonalność gdyńskiego e-Dziennika.
 // @homepageURL https://jakubdaszkiewicz.github.io/edziennik-gdynia-plus/
@@ -12,78 +12,75 @@
 // @run-at document-end
 // ==/UserScript==
 
-var rows = document.getElementsByClassName("dataRow");
-var headings = document.getElementsByClassName("colsSortLab");
-var cells = document.getElementsByClassName("listing");
-var columnsAmount = cells.length/rows.length;
-
-var markNumber;
-for(i=0;i<columnsAmount;i++)
+function countAverage()
 {
-	if (headings[i].innerHTML == "Wartość") markNumber = i;
-}
-
-var weightNumber;
-for(i=0;i<columnsAmount;i++)
-{
-	if (headings[i].innerHTML == "Waga") weightNumber = i;
-}
-
-var ifCountedNumber;
-for(i=0;i<columnsAmount;i++)
-{
-	if (headings[i].innerHTML == "Czy liczona do średniej") ifCountedNumber = i;
-}
-
-if(markNumber == undefined || weightNumber == undefined || ifCountedNumber == undefined)
-{
-	alert('Do prawidłowego działania wtyczki należy ustawić schemat, w którym widoczne są pola "Wartość", "Waga" i "Czy liczona do średniej".');
-}
-else
-{
-	var marks = new Array(rows.length);
-	var ii = 0;
-	for(i=0;i<cells.length;i++)
+	let marks = new Array(rows.length);
+	let ii = 0;
+	for (i=0; i<cells.length; i++)
 	{
-		if (i % columnsAmount == markNumber)
+		if (i%columnsAmount == marksColumnNumber)
 		{
-			marks[ii] = cells[i].innerHTML.trim();
-			ii++;
+			if (ii == rows.length-1)
+			{
+				marks[ii] = document.getElementById("simulationMark").value;
+				break;
+			}
+			else
+			{
+				marks[ii] = cells[i].innerHTML.trim();
+				ii++;
+			}
 		}
 	}
-	var weights = new Array(rows.length);
+	let weights = new Array(rows.length);
 	ii = 0;
-	for(i=0;i<cells.length;i++)
+	for (let i=0; i<cells.length; i++)
 	{
-		if (i % columnsAmount == weightNumber)
+		if (i%columnsAmount == weightsColumnNumber)
 		{
-			weights[ii] = cells[i].innerHTML.trim();
-			ii++;
+			if (ii == rows.length-1)
+			{
+				weights[ii] = document.getElementById("simulationWeight").value;
+				break;
+			}
+			else
+			{
+				weights[ii] = cells[i].innerHTML.trim();
+				ii++;
+			}
 		}
 	}
-	var ifCounteds = new Array(rows.length);
+	let ifCounteds = new Array(rows.length);
 	ii = 0;
-	for(i=0;i<cells.length;i++)
+	for (let i=0; i<cells.length; i++)
 	{
-		if (i % columnsAmount == ifCountedNumber)
+		if (i%columnsAmount == ifCountedsColumnNumber)
 		{
-			ifCounteds[ii] = cells[i].innerHTML.trim();
-			ii++;
+			if (ii == rows.length-1)
+			{
+				ifCounteds[ii] = document.getElementById("simulationIfCounted").value;
+				break;
+			}
+			else
+			{
+				ifCounteds[ii] = cells[i].innerHTML.trim();
+				ii++;
+			}
 		}
 	}
 	
-	var countedAmount = 0;
+	let countedAmount = 0;
 	
-	for(i=0;i<rows.length;i++)
+	for (let i=0; i<rows.length; i++)
 	{
 		if (ifCounteds[i] == "Tak")
 			countedAmount++;
 	}
 	
-	var multipliedMarks = new Array(countedAmount);
+	let multipliedMarks = new Array(countedAmount);
 	
 	ii = 0;
-	for(i=0;i<rows.length;i++)
+	for (let i=0; i<rows.length; i++)
 	{
 		if (ifCounteds[i] == "Tak")
 		{
@@ -92,14 +89,14 @@ else
 		}
 	}
 	
-	var multipliedMarksAdded = 0;
-	for(i=0;i<countedAmount;i++)
+	let multipliedMarksAdded = 0;
+	for (let i=0; i<countedAmount; i++)
 	{
 		multipliedMarksAdded = multipliedMarksAdded + multipliedMarks[i];
 	}
 	
-	var addedWeights = 0;
-	for(i=0;i<rows.length;i++)
+	let addedWeights = 0;
+	for (let i=0; i<rows.length; i++)
 	{
 		if (ifCounteds[i] == "Tak")
 		{
@@ -107,10 +104,118 @@ else
 		}
 	}
 	
-	var average = multipliedMarksAdded / addedWeights;
+	let average = multipliedMarksAdded / addedWeights;
 	
-	var averageRounded = Math.round(average*100)/100;
+	let averageRounded = Math.round(average*100)/100;
 	
 	document.getElementById("gridTopBarFiller").style = "text-align: center;";
 	document.getElementById("gridTopBarFiller").innerHTML = "Średnia: <strong>"+averageRounded+"</strong>";
+}
+
+function simulationRowInsert()
+{
+	let simulationRow = table.insertRow(rows.length+1);
+	// simulationRow.id = "simulationRow";
+	simulationRow.className = "dataRow";
+	for (let i=0; i<columnsAmount; i++)
+	{
+		let newCell = simulationRow.insertCell(i);
+		newCell.className = "listing";
+		if (i == marksColumnNumber)
+		{
+			newCell.id = "simulationCellMark";
+			newCell.innerHTML = '<input type="text" id="simulationMark" placeholder="Wartość symulowanej oceny" />';
+		}
+		else if (i == weightsColumnNumber)
+		{
+			newCell.id = "simulationCellWeight";
+			newCell.innerHTML = '<input type="text" id="simulationWeight" placeholder="Waga symulowanej oceny" />';
+		}
+		else if (i == ifCountedsColumnNumber)
+		{
+			newCell.id = "simulationCellIfCounted";
+			newCell.innerHTML = "<select id=\"simulationIfCounted\"><option value=\"Tak\">Tak</option><option value=\"Nie\" selected>Nie</option></select>";
+		}
+		else if (i == dateColumnNumber)
+		{
+			newCell.id = "simulationCellDate";
+			newCell.style = "text-align:center;"
+			newCell.innerHTML = '<button type="button" id="countAverageButton">Policz średnią</button>';
+			document.getElementById("countAverageButton").addEventListener("click", countAverage, false);
+		}
+		else if (i == authorColumnNumber)
+		{
+			newCell.id = "simulationCellAuthor";
+			newCell.innerHTML = userName;
+		}
+	}
+}
+
+function getUserName()
+{
+	let user = "";
+	let userinfoDiv = document.getElementById("userinfo").innerHTML;
+	let i = 20;
+	while (userinfoDiv[i] != "<")
+	{
+		user += userinfoDiv[i];
+		i++;
+	}
+	return user.slice(0,-1);
+}
+
+// start
+
+let userName = getUserName();
+
+let table = document.getElementById("gridTable");
+let headings = document.getElementsByClassName("colsSortLab");
+
+let rows = document.getElementsByClassName("dataRow");
+let cells = document.getElementsByClassName("listing");
+let columnsAmount = cells.length/rows.length;
+
+let marksColumnNumber;
+for (let i=0; i<columnsAmount; i++)
+{
+	if (headings[i].innerHTML == "Wartość") marksColumnNumber = i;
+}
+
+let weightsColumnNumber;
+for (let i=0; i<columnsAmount; i++)
+{
+	if (headings[i].innerHTML == "Waga") weightsColumnNumber = i;
+}
+
+let ifCountedsColumnNumber;
+for (let i=0; i<columnsAmount; i++)
+{
+	if (headings[i].innerHTML == "Czy liczona do średniej") ifCountedsColumnNumber = i;
+}
+
+let dateColumnNumber;
+for (let i=0; i<columnsAmount; i++)
+{
+	if (headings[i].innerHTML == "Data wystawienia") dateColumnNumber = i;
+}
+
+let authorColumnNumber;
+for (let i=0; i<columnsAmount; i++)
+{
+	if (headings[i].innerHTML == "Osoba wystawiająca") authorColumnNumber = i;
+}
+
+simulationRowInsert();
+
+rows = document.getElementsByClassName("dataRow");
+cells = document.getElementsByClassName("listing");
+columnsAmount = cells.length/rows.length;
+
+if (marksColumnNumber == undefined || weightsColumnNumber == undefined || ifCountedsColumnNumber == undefined || dateColumnNumber == undefined || authorColumnNumber == undefined)
+{
+	alert('Do prawidłowego działania wtyczki należy ustawić schemat, w którym widoczne są pola "Wartość", "Waga", "Czy liczona do średniej", "Data wystawienia" i "Osoba wystawiająca".');
+}
+else
+{
+	countAverage();
 }
