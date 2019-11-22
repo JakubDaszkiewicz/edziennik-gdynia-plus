@@ -1,6 +1,6 @@
 // ==UserScript==
 // @name     e-Dziennik Gdynia plus
-// @version  1.2.0
+// @version  1.2.1
 // @author Jakub Daszkiewicz
 // @description Skrypt zwiększający funkcjonalność gdyńskiego e-Dziennika.
 // @homepageURL https://jakubdaszkiewicz.github.io/edziennik-gdynia-plus/
@@ -115,7 +115,6 @@ function countAverage()
 function simulationRowInsert()
 {
 	let simulationRow = table.insertRow(rows.length+1);
-	// simulationRow.id = "simulationRow";
 	simulationRow.className = "dataRow";
 	for (let i=0; i<columnsAmount; i++)
 	{
@@ -124,12 +123,12 @@ function simulationRowInsert()
 		if (i == marksColumnNumber)
 		{
 			newCell.id = "simulationCellMark";
-			newCell.innerHTML = '<input type="text" id="simulationMark" placeholder="Wartość symulowanej oceny" />';
+			newCell.innerHTML = '<input type="text" id="simulationMark" size="4" placeholder="Wartość symulowanej oceny" />';
 		}
 		else if (i == weightsColumnNumber)
 		{
 			newCell.id = "simulationCellWeight";
-			newCell.innerHTML = '<input type="text" id="simulationWeight" placeholder="Waga symulowanej oceny" />';
+			newCell.innerHTML = '<input type="text" id="simulationWeight" size="4" placeholder="Waga symulowanej oceny" />';
 		}
 		else if (i == ifCountedsColumnNumber)
 		{
