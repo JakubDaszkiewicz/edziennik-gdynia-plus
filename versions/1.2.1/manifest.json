@@ -1,0 +1,40 @@
+{
+  "manifest_version": 2,
+  "name": "e-Dziennik Gdynia plus",
+  "version": "1.2.1",
+  
+  "applications": {
+	"gecko": {
+	  "update_url": "https://jakubdaszkiewicz.github.io/edziennik-gdynia-plus/download/updates.json"
+    }
+  },
+  
+  "description": "Liczy średnią ważoną i umożliwia symulację ocen w gdyńskim e-Dzienniku.",
+  "homepage_url": "https://jakubdaszkiewicz.github.io/edziennik-gdynia-plus/",
+
+  "content_scripts": [
+    {
+      "matches": [ "*://nasze.miasto.gdynia.pl/ed_miej/zest_ed_oceny_ucznia_szczegoly.pl*" ],
+      "js": [ "marks_details.js" ]
+    }
+  ],
+  
+  "icons": {
+	"48": "/icon.svg"
+  },
+
+  "browser_action": {
+    "browser_style": true,
+    "default_icon": "/icon.svg",
+    "default_title": "e-Dziennik Gdynia plus"
+  },
+
+  "background": {
+    "scripts": ["background.js"]
+  },
+
+  "permissions": [ 
+	"*://nasze.miasto.gdynia.pl/ed_miej/zest_ed_oceny_ucznia_szczegoly.pl*",
+	"activeTab"
+  ]
+}
