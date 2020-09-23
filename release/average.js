@@ -89,7 +89,7 @@ else
 	{
 		if (ifCounteds[i] == "Tak")
 		{
-			addedWeights = addedWeights + parseInt(weights[i], 10);
+			addedWeights = addedWeights + parseFloat(weights[i], 10);
 		}
 	}
 	

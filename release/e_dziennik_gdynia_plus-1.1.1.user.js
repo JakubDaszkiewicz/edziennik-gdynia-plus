@@ -1,6 +1,6 @@
 // ==UserScript==
 // @name     e-Dziennik Gdynia plus
-// @version  1.1.0
+// @version  1.1.1
 // @author Jakub Daszkiewicz
 // @description Skrypt zwiększający funkcjonalność gdyńskiego e-Dziennika.
 // @homepageURL https://jakubdaszkiewicz.github.io/edziennik-gdynia-plus/
@@ -103,7 +103,7 @@ else
 	{
 		if (ifCounteds[i] == "Tak")
 		{
-			addedWeights = addedWeights + parseInt(weights[i], 10);
+			addedWeights = addedWeights + parseFloat(weights[i], 10);
 		}
 	}
 	
