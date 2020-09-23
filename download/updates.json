@@ -4,27 +4,31 @@
       "updates": [
         {
           "version": "1.0.2",
-          "update_link": "https://jakubdaszkiewicz.github.io/edziennik-gdynia-plus/download/e_dziennik_gdynia_plus-1.0.2.xpi"
+          "update_link": "https://daszek0.github.io/edziennik-gdynia-plus/download/e_dziennik_gdynia_plus-1.0.2.xpi"
         },
         {
           "version": "1.1.0",
-          "update_link": "https://jakubdaszkiewicz.github.io/edziennik-gdynia-plus/download/e_dziennik_gdynia_plus-1.1.0.xpi"
+          "update_link": "https://daszek0.github.io/edziennik-gdynia-plus/download/e_dziennik_gdynia_plus-1.1.0.xpi"
         },
         {
           "version": "1.1.1",
-          "update_link": "https://jakubdaszkiewicz.github.io/edziennik-gdynia-plus/download/e_dziennik_gdynia_plus-1.1.1.xpi"
+          "update_link": "https://daszek0.github.io/edziennik-gdynia-plus/download/e_dziennik_gdynia_plus-1.1.1.xpi"
         },
         {
           "version": "1.2.0",
-          "update_link": "https://jakubdaszkiewicz.github.io/edziennik-gdynia-plus/download/e_dziennik_gdynia_plus-1.2.0.xpi"
+          "update_link": "https://daszek0.github.io/edziennik-gdynia-plus/download/e_dziennik_gdynia_plus-1.2.0.xpi"
         },
         {
           "version": "1.2.1",
-          "update_link": "https://jakubdaszkiewicz.github.io/edziennik-gdynia-plus/download/e_dziennik_gdynia_plus-1.2.1.xpi"
+          "update_link": "https://daszek0.github.io/edziennik-gdynia-plus/download/e_dziennik_gdynia_plus-1.2.1.xpi"
         },
         {
           "version": "1.3.0",
-          "update_link": "https://jakubdaszkiewicz.github.io/edziennik-gdynia-plus/download/e_dziennik_gdynia_plus-1.3.0.xpi"
+          "update_link": "https://daszek0.github.io/edziennik-gdynia-plus/download/e_dziennik_gdynia_plus-1.3.0.xpi"
+        },
+        {
+          "version": "1.3.1",
+          "update_link": "https://daszek0.github.io/edziennik-gdynia-plus/download/e_dziennik_gdynia_plus-1.3.1.xpi"
         }
       ]
     }
